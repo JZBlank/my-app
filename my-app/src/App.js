@@ -1,11 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
+import {useState} from "react";
+import "./styles.css"
 
-function MyButton() {
-  function handleClick(){
-    alert("Button was clicked")
-  }
-
+function MyButton({count, onClick}) {
   return (
     <button onClick={handleClick}>
       I'm a button
@@ -14,6 +12,20 @@ function MyButton() {
 }
 
 function App() {
+  const [style, setStyle] = useState("")
+
+  function handleClickOne(){
+    setStyle('style1')
+  }
+
+  function handleClickTwo(){
+    setStyle('style2')
+  }
+
+  function handleClick(){
+    alert("Button was clicked")
+  }
+
 
   const user = {
     name: 'Hedy Lamarr',
@@ -41,9 +53,12 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Hello <p style={ {backgroundColor: "red"} }>{user.name}</p> </h1>
-      <MyButton/>
-      <ul>{listItems}</ul>
+      <div className={style}>
+        <h1>Hello <p style={ {backgroundColor: "red"} }>{user.name}</p> </h1>
+        <MyButton count={count} onClick={handleClick}/>
+        <MyButton count={count} onClick={handleClick}/>
+        <ul>{listItems}</ul>
+      </div>
     </div>
   );
 }

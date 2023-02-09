@@ -3,14 +3,6 @@ import './App.css';
 import {useState} from "react";
 import "./styles.css"
 
-function MyButton({count, onClick}) {
-  return (
-    <button onClick={handleClick}>
-      I'm a button
-    </button>
-  );
-}
-
 function App() {
   const [style, setStyle] = useState("")
 
@@ -55,11 +47,20 @@ function App() {
     <div className="App">
       <div className={style}>
         <h1>Hello <p style={ {backgroundColor: "red"} }>{user.name}</p> </h1>
-        <MyButton count={count} onClick={handleClick}/>
-        <MyButton count={count} onClick={handleClick}/>
+        <MyButton count={count} onClick={handleClick} />
+        <MyButton count={count} onClick={handleClick} />
         <ul>{listItems}</ul>
       </div>
     </div>
+  );
+}
+
+
+function MyButton({count, onClick}) {
+  return (
+    <button onClick={handleClick}>
+      I'm a button
+    </button>
   );
 }
 
